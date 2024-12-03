@@ -8,31 +8,46 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Welcome to NotePlay',
+          'NotePlay',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/recording');
-              },
-              child: Text('Start Recording')
+      body: Stack(
+        children: [
+          // Background Picture
+          Positioned.fill(
+            child: Image.asset(
+              'assets/bg-pic.png',
+              fit: BoxFit.cover,
             ),
+          ),
+
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/recording');
+                  },
+                  child: Text('Start Recording')
+                ),
+
+                SizedBox(height: 20,),
             
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/Settings');
-              },
-              child: Text('Settings')
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Settings');
+                  },
+                  child: Text('Settings')
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
