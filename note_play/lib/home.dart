@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 230, 227, 227),
         title: Text(
           'NotePlay',
           style: TextStyle(
@@ -25,25 +26,59 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
+          // Settings Icon Button
+          Positioned(
+            top: 15,
+            right: 15,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(2, 2,),
+                  ),
+                ],
+              ),
+
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Settings');
+                },
+                icon: Icon(
+                  Icons.settings,
+                  size: 50,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+
           Center(
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Spacer to push the button to the right
+                Spacer(),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/recording');
                   },
-                  child: Text('Start Recording')
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    child: Text(
+                      'Start Recording',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
 
-                SizedBox(height: 20,),
-            
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Settings');
-                  },
-                  child: Text('Settings')
-                ),
+                SizedBox(width: 20,), // Add space from the edge
               ],
             ),
           )
